@@ -1,0 +1,367 @@
+.container.journey-entry {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  animation: fadeIn 0.3s ease-in;
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.postcode-input {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.postcode-input-field {
+  flex: 1;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.postcode-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.postcode-input-field:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.add-button {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 25px 0;
+  border-radius: 16px;
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.postcode-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.postcode-table th,
+.postcode-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.postcode-table th {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: white;
+  font-weight: 600;
+}
+
+.postcode-table td {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.postcode-row {
+  transition: all 0.3s ease;
+}
+
+/* Only apply slideDown animation to newly added rows */
+.postcode-row.new-item {
+  animation: slideDown 0.3s ease-out;
+  transform-origin: top;
+}
+
+.postcode-row.removing {
+  animation: slideUp 0.3s ease-out;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.postcode-row:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.drag-handle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  user-select: none;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.dragging {
+  opacity: 0.5;
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.drag-over {
+  border-top: 2px solid #3b82f6;
+}
+
+.edit-button,
+.remove-button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.edit-button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.remove-button {
+  background-color: rgba(239, 68, 68, 0.9);
+  color: white;
+}
+
+.remove-button:hover {
+  background-color: rgb(220, 38, 38);
+  transform: translateY(-1px);
+}
+
+.calculate-button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 18px 36px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calculate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.3);
+}
+
+.calculate-button:disabled {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.5) 0%, rgba(79, 70, 229, 0.5) 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.transport-mode-selector {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.transport-mode-selector h3 {
+  color: white;
+  margin: 0 0 25px 0;
+  font-size: 1.6em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.transport-options {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.transport-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  color: white;
+  font-weight: 500;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.transport-option:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.transport-option.selected {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.8) 100%);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.transport-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.transport-icon {
+  font-size: 1.8em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container.journey-entry {
+    padding: 10px;
+  }
+
+  .postcode-input {
+    flex-direction: column;
+  }
+
+  .postcode-input-field,
+  .add-button {
+    width: 100%;
+  }
+
+  .postcode-table th,
+  .postcode-table td {
+    padding: 8px;
+  }
+
+  .edit-button,
+  .remove-button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+
+  .transport-options {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .transport-option {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .postcode-table {
+    font-size: 14px;
+  }
+
+  .edit-button,
+  .remove-button {
+    padding: 4px 6px;
+    margin: 2px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+} 
