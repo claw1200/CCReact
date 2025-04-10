@@ -114,10 +114,10 @@ const JourneyResults = ({ results, postcodes, onBack, isLoading }) => {
               
               return (
                 <tr key={index}>
-                  <td>{getPostcodeValue(postcodes[index])}</td>
-                  <td>{getPostcodeValue(postcodes[index + 1])}</td>
-                  <td>{distance.toFixed(1)} miles</td>
-                  <td>{formatTime(time)}</td>
+                  <td data-label="From">{getPostcodeValue(postcodes[index])}</td>
+                  <td data-label="To">{getPostcodeValue(postcodes[index + 1])}</td>
+                  <td data-label="Distance">{distance.toFixed(1)} miles</td>
+                  <td data-label="Time">{formatTime(time)}</td>
                 </tr>
               );
             })}
