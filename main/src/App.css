@@ -1,11 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .container {
@@ -50,4 +58,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.map-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.map-pattern {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-width: 100vw;
+  min-height: 100vh;
 }

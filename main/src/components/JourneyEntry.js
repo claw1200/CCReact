@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './JourneyEntry.css';
 import JourneyResults from './JourneyResults';
+import carIcon from '../assets/car.svg';
+import walkIcon from '../assets/walk.svg';
+import bikeIcon from '../assets/bike.svg';
 
 // Main component for handling journey entry and postcode management
 const JourneyEntry = () => {
@@ -231,9 +234,9 @@ const JourneyEntry = () => {
                 onChange={(e) => setTravelMode(e.target.value)}
               />
               <span className="transport-icon">
-                {mode === 'Driving' && '🚗'}
-                {mode === 'Bicycling' && '🚲'}
-                {mode === 'Walking' && '🚶'}
+                {mode === 'Driving' && <img src={carIcon} alt="Car" className="mode-icon" />}
+                {mode === 'Walking' && <img src={walkIcon} alt="Walking" className="mode-icon" />}
+                {mode === 'Bicycling' && <img src={bikeIcon} alt="Bicycle" className="mode-icon" />}
               </span>
               {mode}
             </label>
