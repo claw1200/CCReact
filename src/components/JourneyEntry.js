@@ -34,7 +34,7 @@ const JourneyEntry = () => {
       return;
     }
 
-    if (editIndex >= 0) {
+    if (editIndex >= 0) { // If editing an existing postcode
       const newPostcodes = [...postcodes];
       newPostcodes[editIndex] = trimmedPostcode;
       setPostcodes(newPostcodes);
@@ -68,7 +68,7 @@ const JourneyEntry = () => {
     setTimeout(() => document.body.removeChild(dragImage), 0);
   };
 
-  const handleDragOver = (e, index) => {
+  const handleDragOver = (e, index) => { // Handles drag over event
     e.preventDefault();
     const draggedOverItem = e.target.closest('tr');
     if (draggedOverItem) {
@@ -76,7 +76,7 @@ const JourneyEntry = () => {
     }
   };
 
-  const handleDragLeave = (e) => {
+  const handleDragLeave = (e) => { // Handles drag leave event
     e.preventDefault();
     const draggedOverItem = e.target.closest('tr');
     if (draggedOverItem) {
@@ -84,7 +84,7 @@ const JourneyEntry = () => {
     }
   };
 
-  const handleDrop = (e, dropIndex) => {
+  const handleDrop = (e, dropIndex) => { // Handles drop event
     e.preventDefault();
     const draggedOverItem = e.target.closest('tr');
     if (draggedOverItem) {
@@ -102,7 +102,7 @@ const JourneyEntry = () => {
     setDraggedItem(null);
   };
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = (e) => { // Handles drag end event
     e.target.classList.remove('dragging');
     setDraggedItem(null);
   };
@@ -154,7 +154,7 @@ const JourneyEntry = () => {
       // Prepare and send API request
       const route = postcodes.map(p => typeof p === 'string' ? p : p.value).join(',');
       const url = `/Travel/JourneyPlan.aspx?Route=${route}&Format=Miles&TravelMode=${travelMode}&TrafficMode=best_guess`;
-      
+      // Fetch the data from the API
       const response = await fetch(url, {
         method: 'GET',
         credentials: 'same-origin',
@@ -171,8 +171,9 @@ const JourneyEntry = () => {
 
       // Process and validate response data
       const data = await response.text();
-      
+      // Check if the response is a string
       if (data && typeof data === 'string') {
+        // Split the data into segments
         const segments = data.split(';').filter(segment => segment.trim() !== '');
         
         // Ensure each segment contains valid time and distance values
@@ -181,6 +182,7 @@ const JourneyEntry = () => {
           return !isNaN(time) && !isNaN(distance);
         });
 
+        // Check if the segments are valid and the number of segments matches the number of postcodes
         if (validSegments && segments.length === postcodes.length - 1) {
           setCalculationResults(data);
         } else {

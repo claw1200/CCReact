@@ -1,6 +1,7 @@
 import React from 'react';
 import './StartJourney.css';
-
+// component for the start journey page
+// this is the first page that the user sees
 const StartJourney = ({ onStart }) => {
   return (
     <div className="start-journey">
